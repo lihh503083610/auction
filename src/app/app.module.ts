@@ -9,8 +9,16 @@ import { SearchComponent } from './search/search.component';
 import { CarouselComponent } from './carousel/carousel.component';
 import { ProductComponent } from './product/product.component';
 import { StarsComponent } from './stars/stars.component';
+import {RouterModule, Routes} from '@angular/router';
+import { ProductDetailComponent } from './product-detail/product-detail.component';
+import { HomeComponent } from './home/home.component';
+import {FormsModule} from '@angular/forms';
+import {HttpModule} from '@angular/http';
 
-
+const routeConfig: Routes = [
+  {path: '', component: HomeComponent},
+  {path: 'product/:productId', component:ProductDetailComponent}
+]
 @NgModule({
   declarations: [
     AppComponent,
@@ -19,10 +27,15 @@ import { StarsComponent } from './stars/stars.component';
     SearchComponent,
     CarouselComponent,
     ProductComponent,
-    StarsComponent
+    StarsComponent,
+    ProductDetailComponent,
+    HomeComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    FormsModule,
+    HttpModule,
+    RouterModule.forRoot(routeConfig)
   ],
   providers: [],
   bootstrap: [AppComponent]
